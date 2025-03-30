@@ -18,6 +18,7 @@ services:
       - ./mediawiki:/app
       - ./data/images:/app/images
       - ./data:/data
+      - ./scripts:/scripts
     restart: always
 networks:
   default:

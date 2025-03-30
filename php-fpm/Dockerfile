@@ -1,6 +1,6 @@
 FROM php:8.3-fpm-alpine3.20
 RUN apk add php83-sqlite3 git diffutils
-RUN mkdir /data && chmod 777 /data
+RUN mkdir -p /data/images && chmod 777 /data && chmod 777 /data/images
 RUN set -ex \
     && apk --no-cache add icu-dev libjpeg-turbo-dev libpng-dev freetype-dev zlib-dev \
     && apk --no-cache add --virtual .build-deps $PHPIZE_DEPS \

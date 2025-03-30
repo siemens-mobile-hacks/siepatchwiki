@@ -112,7 +112,7 @@ $wgMemCachedServers = [];
 
 ## To enable image uploads, make sure the 'images' directory
 ## is writable, then set this to true:
-$wgEnableUploads = false;
+$wgEnableUploads = true;
 #$wgUseImageMagick = true;
 #$wgImageMagickConvertCommand = "/usr/bin/convert";
 
@@ -157,33 +157,37 @@ $wgDiff3 = "/usr/bin/diff3";
 
 ## Default skin: you can change the default skin. Use the internal symbolic
 ## names, e.g. 'vector' or 'monobook':
-$wgDefaultSkin = "minerva";
+//$wgDefaultSkin = "minerva";
+$wgDefaultSkin = "MonoBook";
 
 # Enabled skins.
 # The following skins were automatically enabled:
-wfLoadSkin( 'MinervaNeue' );
+//wfLoadSkin( 'MinervaNeue' );
 wfLoadSkin( 'MonoBook' );
-wfLoadSkin( 'Timeless' );
-wfLoadSkin( 'Vector' );
+//wfLoadSkin( 'Timeless' );
+//wfLoadSkin( 'Vector' );
 
 
 # End of automatically generated settings.
 # Add more configuration options below.
 
 wfLoadExtension( 'VisualEditor' );
-$wgGroupPermissions['user']['writeapi'] = true;
-wfLoadExtension( 'WikiEditor' );
+$wgGroupPermissions['*']['writeapi'] = true;
+//wfLoadExtension( 'WikiEditor' );
 //wfLoadExtension( 'DiscussionTools' );
 // Optional: Set VisualEditor as the default editor for anonymous users
 // otherwise they will have to switch to VE
 $wgDefaultUserOptions['visualeditor-editor'] = "visualeditor";
-
+$wgDefaultUserOptions['visualeditor-enable'] = 1;
 // Optional: Don't allow users to disable it
 $wgHiddenPrefs[] = 'visualeditor-enable';
 
 // Optional: Enable VisualEditor's experimental code features
-$wgDefaultUserOptions['visualeditor-enable-experimental'] = 1;
+//$wgDefaultUserOptions['visualeditor-enable-experimental'] = 1;
 
 // Activate ONLY the 2017 wikitext editor by default
-$wgDefaultUserOptions['visualeditor-autodisable'] = true;
+$wgDefaultUserOptions['visualeditor-autodisable'] = false;
 $wgDefaultUserOptions['visualeditor-newwikitext'] = 1;
+
+wfLoadExtension( 'OOJSPlus' );
+wfLoadExtension( 'EnhancedUpload' );
