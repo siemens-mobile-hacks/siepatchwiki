@@ -1,0 +1,25 @@
+services:
+  nginx:
+    build: nginx
+    restart: always
+    volumes:
+      - ./mediawiki/:/app
+      - ./data/images:/app/images
+      - ./img/:/img
+    links:
+      - "php-fpm"
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+  php-fpm:
+    build: php-fpm
+    volumes:
+      - ./mediawiki:/app
+      - ./data/images:/app/images
+      - ./data:/data
+    restart: always
+networks:
+  default:
+      name: nginx-proxy
+      external: true
