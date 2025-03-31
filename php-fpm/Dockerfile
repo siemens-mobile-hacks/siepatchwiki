@@ -10,4 +10,5 @@ RUN set -ex \
     && pecl install apcu \
     && docker-php-ext-enable apcu \
     && apk del .build-deps
+COPY upload_max_filesize.ini /usr/local/etc/php/conf.d/upload_max_filesize.ini
 CMD ["php-fpm"]
